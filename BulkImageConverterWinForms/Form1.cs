@@ -20,7 +20,7 @@ public partial class Form1 : Form
 
         string directory = textBox1.Text;
         int converted = 0;
-        string fromExtension = comboBoxFromExtension.SelectedItem.ToString();
+        string fromExtension = comboBoxFromExtension.Text;
         switch (comboBoxToExtension.SelectedItem)
         {
             case "JPG":
@@ -106,10 +106,8 @@ public partial class Form1 : Form
     public static string ConvertToJpg(string filePath)
     {
         string jpgFilePath = Path.ChangeExtension(filePath, ".jpg");
-        #pragma warning disable CA1416 // Validate platform compatibility
         using var bitmap = new Bitmap(filePath);
         bitmap.Save(jpgFilePath, ImageFormat.Jpeg);
-        #pragma warning restore CA1416 // Validate platform compatibility
         return jpgFilePath;
     }
 }
